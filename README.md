@@ -20,8 +20,21 @@ The really exciting thing about Ghost is that posts made with it conform to [Ope
 - See the [upstream fork's README.md file](https://github.com/TryGhost/Casper).
 - Read up on [Handlebars](http://handlebarsjs.com/).
 
-## Development/Repository Notes
+# Developer Notes
+
+## Working with a local copy of Ghost
+1. Follow instructions to set up a Ghost dev environment [here](https://ghost.org/docs/install/local/). I named mine `ghost-local`.
+1. Clone this repository to a separate location. 
+1. `ghost stop` if it is running.
+1. In the `ghost-local` navigate to `content/themes/` and create a symlink to the root of this repository.
+1. `ghost start`
+1. Open the admin panel via localhost and set the theme to `performer` (it should show up as an option now).
+1. Get to work!
+
+## Working in the Casper fork
 The `master` branch is a copy of the upstream fork. Main changes are done in `master-fork` branch.  
+
+It is desired to pull in changes from the upstream forked repository from time to time. For that reason, the `master` branch is left in-tact and should never be pushed to. Instead use the `master-fork` branch for working commits, and rebase it on top of `master` as needed.  Do `--ff-only` merges in this case.  
 
 Set up a git remote of the master with this command:
 
