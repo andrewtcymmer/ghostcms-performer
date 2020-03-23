@@ -1,69 +1,47 @@
-# Casper
+# Performer
+A theme for [Ghost](http://github.com/tryghost/ghost/) targeting self-promoting performers (DIY musicians).  
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/). This is the latest development version of Casper! If you're just looking to download the latest release, head over to the [releases](https://github.com/TryGhost/Casper/releases) page.
+# Project History / Motivation
+I keep a regular day job as a web developer to pay my bills, but my real passion is playing music. A few years ago I decided that I was not doing enough of my passion, and that it was time to start.  
 
-&nbsp;
+One of the things I needed to do was get the word out to people about where and when and with who I am going to be playing. I had worked with WordPress once before and was not all that impressed or excited to use it for myself. The plugins I found were hard to style and/or just felt clunky. The blogging platforms out there didn't offer enough expandability to put in things like event calendars or web stores for selling merch.  
 
-![screenshot-desktop](https://user-images.githubusercontent.com/353959/66987533-40eae100-f0c1-11e9-822e-cbaf38fb8e3f.png)
+Ghost hit the right tone for me - own your own platform and your content. But it doesn't have a plugin system where one can go find event calendars and commerce modules. So, with my skillset and a healthy dose of punk-rock DIY attitude, I set out to create this theme to fill a few gaps:  
 
-&nbsp;
+- Treat events like a blog post. Allow discussion, some editorial (i.e. making a thank you note to the host)
+- SEO on every event (if it's easy for people to find you, they will find you!)
 
-# First time using a Ghost theme?
+Ghost's post system does most of the work. All that's really needed is to detect when a post is an event, and then render it with a custom handlebars template.  
 
-Ghost uses a simple templating language called [Handlebars](http://handlebarsjs.com/) for its themes.
+The really exciting thing about Ghost is that posts made with it conform to [Open Graph](https://ogp.me), making [integration with social media](https://ghost.org/integrations/facebook/) quite easy. The Event Posts I make in Ghost go downstream to social platforms with a link back to my site. Ownership of my content is clear.  
 
-This theme has lots of code comments to help explain what's going on just by reading the code. Once you feel comfortable with how everything works, we also have full [theme API documentation](https://ghost.org/docs/api/handlebars-themes/) which explains every possible Handlebars helper and template.
+# Technical Help
+- Support is not being offered at this time because this is just for my private use. Maybe this project will gain some popularity; we'll deal with it later if that happens.  
+- See the [upstream fork's README.md file](https://github.com/TryGhost/Casper).
+- Read up on [Handlebars](http://handlebarsjs.com/).
 
-**The main files are:**
+## Development/Repository Notes
+The `master` branch is a copy of the upstream fork. Main changes are done in `master-fork` branch.  
 
-- `default.hbs` - The parent template file, which includes your global header/footer
-- `index.hbs` - The main template to generate a list of posts, usually the home page
-- `post.hbs` - The template used to render individual posts
-- `page.hbs` - Used for individual pages
-- `tag.hbs` - Used for tag archives, eg. "all posts tagged with `news`"
-- `author.hbs` - Used for author archives, eg. "all posts written by Jamie"
+Set up a git remote of the master with this command:
 
-One neat trick is that you can also create custom one-off templates by adding the slug of a page to a template file. For example:
+    git remote add upstream git@github.com:TryGhost/Casper.git
 
-- `page-about.hbs` - Custom template for an `/about/` page
-- `tag-news.hbs` - Custom template for `/tag/news/` archive
-- `author-ali.hbs` - Custom template for `/author/ali/` archive
+Pull in updates, update master:  
 
+    git fetch -p origin/upstream
+    git checkout master
+    git merge origin/upstream
 
-# Development
+Rebase working branch on top of updated master:  
 
-Casper styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
+    git checkout master-fork
+    git rebase origin/master
 
-```bash
-# install dependencies
-yarn install
-
-# run development server
-yarn dev
-```
-
-Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
-
-The `zip` Gulp task packages the theme files into `dist/<theme-name>.zip`, which you can then upload to your site.
-
-```bash
-# create .zip file
-yarn zip
-```
-
-# PostCSS Features Used
-
-- Autoprefixer - Don't worry about writing browser prefixes of any kind, it's all done automatically with support for the latest 2 major versions of every browser.
-- [Color Mod](https://github.com/jonathantneal/postcss-color-mod-function)
-
-
-# SVG Icons
-
-Casper uses inline SVG icons, included via Handlebars partials. You can find all icons inside `/partials/icons`. To use an icon just include the name of the relevant file, eg. To include the SVG icon in `/partials/icons/rss.hbs` - use `{{> "icons/rss"}}`.
-
-You can add your own SVG icons in the same manner.
-
+It's done this way to help keep my changes in a separate timeline from the main development, so that the theme package can easily take updates.  
 
 # Copyright & License
+Original work Copyright (c) 2013-2020 Ghost Foundation - Released under the [MIT license](LICENSE).  
 
-Copyright (c) 2013-2020 Ghost Foundation - Released under the [MIT license](LICENSE).
+This work is a derivative of the Original work. At this time it is intended only for private use.  
+
