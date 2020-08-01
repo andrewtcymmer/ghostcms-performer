@@ -22,32 +22,17 @@ into the {body} of the default.hbs template --}}
 
 {{!-- The main content area --}}
 <main id="site-main" class="site-main outer">
-  <div>Attributes:<br/>
-    {{#is "home"}}
-      <p>Homepage</p>
-    {{/is}}
-    {{#is "index"}}
-      <p>Index</p>
-    {{/is}}
-    {{#is "page"}}
-      <p>Page</p>
-    {{/is}}
-    {{#is "post"}}
-      <p>Post</p>
-    {{/is}}
+  <!-- Ghost Attributes: {{#is "home"}}Homepage{{/is}} {{#is "index"}}Index{{/is}} {{#is "page"}}Page{{/is}} {{#is "post"}}Post{{/is}} -->
+  {{#is "home"}}
+  <div>
+    <p>Newest 3 events</p>
+    {{#get "posts" filter="primary_tag:events" include="tags" limit="3" order="published_at desc"}}
+      {{#foreach posts}}
+        {{> "post-card"}}
+      {{/foreach}}
+    {{/get}}
   </div>
-
-  {{#page}}
-    {{#is "home"}}
-      {{#get "posts" include="tags" filter="tag:'Events'" limit="3" as |next_event|}}
-        {{#foreach next_event}}
-          {{> "post-card"}}
-        {{/foreach}}
-      {{/get}}
-    {{/is}}
-  <h2>{{title}}</h2>
-  <p>{{content}}</h2>
-  {{/page}}
+  {{/is}}
 </main>
 
 {{> site-header}}
