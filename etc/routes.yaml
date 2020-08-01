@@ -1,0 +1,17 @@
+routes:
+  /:
+    data: page.home
+    template: home
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+  /event/:
+    permalink: /event/{slug}/
+    template: event
+    primary_tag: Event
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

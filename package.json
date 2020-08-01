@@ -7,10 +7,6 @@
         "ghost-api": "v3"
     },
     "license": "MIT",
-    "screenshots": {
-        "desktop": "assets/screenshot-desktop.jpg",
-        "mobile": "assets/screenshot-mobile.jpg"
-    },
     "scripts": {
         "dev": "gulp",
         "zip": "gulp zip",
@@ -22,9 +18,9 @@
         "postship": "git fetch && gulp release"
     },
     "author": {
-        "name": "Ghost Foundation, and Andrew T. Cymmer",
-        "email": "",
-        "url": ""
+        "name": "Andrew T. Cymmer",
+        "email": "andrew@localhost.net",
+        "url": "http://localhost:2368"
     },
     "gpm": {
         "type": "theme",
